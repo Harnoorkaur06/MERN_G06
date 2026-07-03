@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            
+            height: 500px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+        }
+        .btn{
+            display: flex;
+            gap: 10px;
+        }
+        button{
+            width: 70px;
+            font-size: xx-large;
+        }
+
+        img{
+            height: 250px;
+            width: 250px;
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRnMQcgJ2frCE-lQwz4YL3audxNETsOrXThfaOVlYupg&s" alt="">
+        <h3>King Khan</h3>
+        <div class="btn">
+            <button id="likebutton">👍</button>
+            <h3>Like: <span id="lcount">0</span></h3>
+        </div>
+        <div class="btn">
+            <button id="dislikebutton">👎</button>
+            <h3>Dislike: <span id="dcount">0</span></h3>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var button=document.getElementById("likebutton")
+    var count=0
+    button.addEventListener("click",function(){
+        count+=1;
+        // alert("button trigered")
+        var lcount=document.getElementById("lcount")
+        // console.log(lcount)
+        // <span>0</span>
+        lcount.innerText=count
+    })
+
+    var button2=document.getElementById("dislikebutton")
+    var count2=0;
+    button2.addEventListener("click",function(){
+        count2+=1
+        var dcount=document.getElementById("dcount")
+        dcount.innerText=count2
+    })
+
+
+</script>

@@ -1,0 +1,39 @@
+#container{
+
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#cardsContainer{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4,1Fr);
+    gap: 10px;
+}
+
+#cardsContainer div{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+button{
+    color: aliceblue;
+    background-color: green;
+    padding: 10px;
+}
+input{
+    height: 35px;
+
+}
+img{
+    height: 200px;
+
+}

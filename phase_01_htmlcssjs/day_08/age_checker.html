@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div>
+        <input id="inp" type="number" placeholder="Enter age">
+        <button id="button" onclick="checkAge()">Submit</button>
+        <p id="message"></p>
+    </div>
+</body>
+</html>
+<script>
+    
+
+    function checkAge(){
+        let inp=document.getElementById('inp').value
+        let message=document.getElementById('message')
+        if(inp>=18){
+            message.innerHTML="u can vote!!"
+
+        }else{
+            message.innerHTML="oops!! u can't vote kidooo!!"
+        }
+    }
+</script>

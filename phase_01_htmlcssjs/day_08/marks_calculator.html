@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="num" placeholder="Enter ur marks">
+    <button onclick="handleClick()" id="cal">Calculate</button>
+    <h3 id="res"></h3>
+</body>
+</html>
+<script>
+    function handleClick(){
+    let number=document.getElementById("num").value
+    let res=document.getElementById("res")
+    if(number>=90){
+        res.innerHTML="A+"
+        res.style.color="red"
+    }
+    else if(number>=75){
+        res.innerHTML="A"
+        res.style.color="green"
+    }
+    else if(number>=60){
+        res.innerHTML="B"
+        res.style.color="yellow"
+    }
+    else if(number>=40){
+        res.innerHTML="C"
+        res.style.color="blue"
+    }
+    else{
+        res.innerHTML="Fail"
+        res.style.color="black"
+    }
+
+    }
+
+
+
+
+</script>

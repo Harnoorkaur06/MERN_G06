@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <style>
+        #container{
+            border: 1px solid red;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #inpcontainer{
+            border: 1px solid black;
+            width: 60%;
+            height: 40%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="inpcontainer">
+            <div class="input-group mb-3">
+                <input id="task" type="text" class="form-control" placeholder="Add task" aria-label="Recipient’s username" aria-describedby="button-addon2">
+                <button onclick="handleclick()" class="btn btn-outline-secondary" type="button" id="button-addon2">Submit</button>
+            </div>
+
+        <div id="taskcontainer">
+
+        </div>
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+    let todos=[]
+    let text=document.getElementById("task")
+
+    let handleclick=()=>{
+        let task={
+            title:text.value,
+            status:false
+        }
+        todos.push(task)
+        // console.log(todos)
+        render()
+    }
+    let taskcontainer=document.getElementById("taskcontainer")
+    let render=()=>{
+        taskcontainer.innerHTML=""
+        todos.forEach((el,index)=>{
+            taskcontainer.innerHTML+=`
+            <div style="border-bottom: 1px solid black; display:flex;justify-content: space-between">
+                <p>${el.title}</p>
+                <button type="button" class="btn btn-light">❌</button>
+            </div>
+
+            `
+        })
+    }
+</script>

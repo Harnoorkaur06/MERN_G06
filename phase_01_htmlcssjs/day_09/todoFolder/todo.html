@@ -16,14 +16,16 @@
         #inpcontainer{
             border: 1px solid black;
             width: 60%;
-            height: 40%;
+            height: auto;
             padding: 10px;
+            
         }
     </style>
 </head>
 <body>
     <div id="container">
         <div id="inpcontainer">
+            <h3>Todo Tracker</h3>
             <div class="input-group mb-3">
                 <input id="task" type="text" class="form-control" placeholder="Add task" aria-label="Recipient’s username" aria-describedby="button-addon2">
                 <button onclick="handleclick()" class="btn btn-outline-secondary" type="button" id="button-addon2">Submit</button>
@@ -48,6 +50,7 @@
         }
         todos.push(task)
         // console.log(todos)
+        text.value = ""; 
         render()
     }
     let taskcontainer=document.getElementById("taskcontainer")
@@ -56,11 +59,24 @@
         todos.forEach((el,index)=>{
             taskcontainer.innerHTML+=`
             <div style="border-bottom: 1px solid black; display:flex;justify-content: space-between">
-                <p>${el.title}</p>
-                <button type="button" class="btn btn-light">❌</button>
+                <p onclick="handleStatus(${index})" style="cursor:pointer; text-decoration:${el.status==true?"line-through":"none"};color: ${el.status==true?"aquamarine":"none"}; " >${el.title}</p>
+                <button onclick="handleDelete(${index})" type="button" class="btn btn-light">❌</button>
             </div>
 
             `
         })
+    }
+
+    let handleDelete=(index)=>{
+        // alert(`Index ${index}`)
+        todos.splice(index,1)
+        render()
+    }
+
+    let handleStatus=(id)=>{
+        // alert("triggered")
+        todos[id].status=!todos[id].status
+        // console.log("todos after click",todos)
+        render()
     }
 </script>

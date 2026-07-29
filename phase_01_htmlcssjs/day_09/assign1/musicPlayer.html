@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:#f3f5f7;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:100vh;
+}
+
+.card{
+
+    width:350px;
+
+    background:white;
+
+    border-radius:10px;
+
+    padding:20px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.2);
+
+    border:1px solid #ddd;
+}
+
+h2{
+
+    text-align:center;
+
+    color:#3d4f73;
+
+    margin-bottom:15px;
+}
+
+h2 i{
+
+    color:#4b4fd3;
+
+    margin-right:5px;
+}
+
+#playing{
+
+    margin-bottom:15px;
+
+    font-size:15px;
+}
+
+input{
+
+    width:100%;
+
+    padding:10px;
+
+    border:1px solid #bbb;
+
+    border-radius:5px;
+
+    outline:none;
+}
+
+.buttons{
+
+    display:flex;
+
+    gap:10px;
+
+    margin:15px 0;
+}
+
+button{
+
+    flex:1;
+
+    padding:10px;
+
+    border:none;
+
+    color:white;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+.add{
+
+    background:#1769ff;
+}
+
+.play{
+
+    background:#1db954;
+}
+
+button:hover{
+
+    opacity:.9;
+}
+
+ul{
+
+    list-style:none;
+
+    border:1px solid #ddd;
+
+    border-radius:5px;
+
+    overflow:hidden;
+}
+
+li{
+
+    padding:10px;
+
+    border-bottom:1px solid #ddd;
+}
+
+li:last-child{
+
+    border-bottom:none;
+}
+
+.active{
+
+    background:#d8f5dd;
+
+    font-weight:bold;
+}
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>
+            <i class="fa-solid fa-music"></i>
+            Music Player
+        </h2>
+
+        <p id="playing">Now Playing : <span>None</span></p>
+
+        <input type="text"
+        id="songInput"
+        placeholder="Enter song name">
+
+        <div class="buttons">
+            <button class="add" onclick="addSong()">
+                Add Song
+            </button>
+
+            <button class="play" onclick="playSong()">
+                Play Song
+            </button>
+        </div>
+
+        <ul id="queue">
+            <li>Lak tunu tunu</li>
+            <li>De de gera</li>
+        </ul>
+
+    </div>
+
+</div>
+</body>
+</html>
+<script>
+    const queue = document.getElementById("queue");
+const input = document.getElementById("songInput");
+const playing = document.querySelector("#playing span");
+
+function addSong(){
+
+    let song = input.value.trim();
+
+    if(song===""){
+        alert("Enter a song name");
+        return;
+    }
+
+    let li = document.createElement("li");
+
+    li.innerText = song;
+
+    queue.appendChild(li);
+
+    input.value="";
+}
+
+function playSong(){
+
+    let firstSong = queue.querySelector("li");
+
+    if(!firstSong){
+
+        playing.innerText="None";
+        return;
+    }
+
+    playing.innerText=firstSong.innerText;
+
+    firstSong.classList.add("active");
+
+    setTimeout(()=>{
+
+        firstSong.remove();
+
+        playSong();
+
+    },3000);
+
+}
+</script>

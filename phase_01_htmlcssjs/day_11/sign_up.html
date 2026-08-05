@@ -87,12 +87,14 @@
         else{
             array=JSON.parse(check_data)
         }
+        // some method -->returs boolean value acc to specified condition
         let check_user = array.some((el) => {
-            return el.useremail === user.useremail;
+            return el.useremail === email.value;
         });
         if (check_user) {
-            alert("User already exists!");
-            return;
+          alert("User already exists");
+          return;
+            
         }
         array.push(user);
 

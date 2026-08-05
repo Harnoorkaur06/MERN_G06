@@ -46,3 +46,33 @@
     
 </body>
 </html>
+<script>
+  let handleSubmit=(event)=>{
+    event.preventDefault() //to stop autorefreshing of browser
+
+    let email=document.getElementById("email")
+    let password=document.getElementById("password")
+    // get request for checking user exists or not
+    let users_data=JSON.parse(localStorage.getItem("users"))
+    // console.log(users_data)
+
+    let user=users_data.find((el)=>el.useremail==email.value)
+    console.log("matched user",user)
+    // filter => returns matching array of objects
+    // find =>returns single matching objects----first occurrence
+
+    if(user && user.userpassword==password.value){
+      localStorage.setItem("current_user",JSON.stringify(user))
+      localStorage.setItem("isLoggedIn","true")
+      window.location.href="products.html"
+      // alert("user logged in successfully")
+    }else{
+      alert("Invalid Credentials")
+    }
+    
+  }
+
+// signup ==> user registration
+// login ==> backend verifies user wheather she is present in database or not ===> token
+// token ==> user information stored
+</script>

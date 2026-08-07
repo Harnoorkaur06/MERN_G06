@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+
+    <div class="card shadow p-4">
+
+        <h2 class="text-center mb-4">User Preferences</h2>
+
+        <input type="text" id="name" class="form-control mb-3" placeholder="Enter Your Name">
+
+        <label class="form-label">Select Background Color</label>
+
+        <input type="color" id="color" class="form-control form-control-color mb-3">
+
+        <button onclick="handleSave()" class="btn btn-primary">Save Preferences</button>
+
+        <div id="greeting" class="mt-4 fs-4 fw-bold text-center"></div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+<script>
+    let handleSave=()=>{
+
+    let name =document.getElementById("name").value;
+    let color =document.getElementById("color").value;
+
+    if(name==""){
+        alert("Please enter your name!");
+        return;
+    }
+
+    if(color==""){
+        alert("Please enter a background color!");
+        return;
+    }
+
+    localStorage.setItem("username", name);
+    localStorage.setItem("bgcolor", color);
+
+    document.getElementById("greeting").innerHTML =
+        `Welcome, ${name}!`;
+
+    document.body.style.backgroundColor = color;
+}
+
+
+
+window.onload = function(){
+
+    let name = localStorage.getItem("username");
+    let color = localStorage.getItem("bgcolor");
+
+    if(name && color){
+
+        document.getElementById("name").value = name;
+        document.getElementById("color").value = color;
+
+        document.getElementById("greeting").innerHTML =
+            `Welcome, ${name}!`;
+
+        document.body.style.backgroundColor = color;
+    }
+}
+</script>

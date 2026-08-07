@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+
+    <div class="card p-4 shadow">
+
+        <h2 class="text-center mb-4">Notes App</h2>
+
+        <div class="mb-3">
+            <label class="form-label">Enter Notes</label>
+
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Write your notes here..."></textarea>
+        </div>
+
+        <button onclick="handleSave(event)" class="btn btn-success mb-2">Save Notes</button>
+
+        <button onclick="handleLoad(event)" class="btn btn-primary mb-2">Load Notes</button>
+
+        <button onclick="handleClear(event)" class="btn btn-danger">Clear Notes</button>
+
+    </div>
+
+</div>
+
+<script>
+
+window.onload=function(){
+    handleLoad();
+}
+
+let handleSave=(event)=>{
+
+    event.preventDefault()
+
+    let notes =document.getElementById("exampleFormControlTextarea1")
+
+    if(notes.value==""){
+        alert("Please enter some notes!")
+        return;
+    }
+
+    localStorage.setItem("notes", notes.value)
+
+    alert("Notes Saved Successfully!");
+}
+
+// Load Notes
+let handleLoad=(event)=>{
+
+    event.preventDefault()
+
+    let storage =localStorage.getItem("notes")
+
+    if(storage){
+        document.getElementById("exampleFormControlTextarea1").value = storage
+    }
+}
+
+// Clear Notes
+let handleClear=(event)=>{
+
+    event.preventDefault()
+
+
+    localStorage.removeItem("notes")
+
+    document.getElementById("exampleFormControlTextarea1").value = ""
+
+    alert("Notes Cleared Successfully!");
+}
+
+</script>
+
+</body>
+</html>

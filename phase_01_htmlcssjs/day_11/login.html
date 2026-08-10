@@ -53,6 +53,7 @@
     let email=document.getElementById("email")
     let password=document.getElementById("password")
     // get request for checking user exists or not
+    // let users_data=JSON.parse(localStorage.getItem("users"))
     let users_data=JSON.parse(localStorage.getItem("users"))
     // console.log(users_data)
 
@@ -62,8 +63,10 @@
     // find =>returns single matching objects----first occurrence
 
     if(user && user.userpassword==password.value){
-      localStorage.setItem("current_user",JSON.stringify(user))
-      localStorage.setItem("isLoggedIn","true")
+      // localStorage.setItem("current_user",JSON.stringify(user))
+      sessionStorage.setItem("current_user",JSON.stringify(user))
+      // localStorage.setItem("isLoggedIn","true")
+      sessionStorage.setItem("isLoggedIn","true")
       window.location.href="products.html"
       // alert("user logged in successfully")
     }else{

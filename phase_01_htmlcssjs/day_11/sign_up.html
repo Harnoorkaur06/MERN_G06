@@ -79,6 +79,9 @@
         }
         // console.log(user)
         // array.push(user)
+
+        // let check_data=localStorage.getItem("users")||[]
+        //                OR
         let check_data=localStorage.getItem("users")
         console.log(check_data)
         if(check_data==null){
@@ -87,6 +90,7 @@
         else{
             array=JSON.parse(check_data)
         }
+        
         // some method -->returs boolean value acc to specified condition
         let check_user = array.some((el) => {
             return el.useremail === email.value;

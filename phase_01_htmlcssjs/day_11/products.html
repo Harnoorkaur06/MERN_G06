@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body >
     <div id="container">
         <h1>Product page</h1>
         <h3 id="username">Welcome : {username}</h3>
@@ -14,18 +14,24 @@
     <div id="falseUser">
         
     </div>
+    <div id="card">
+
+    </div>
 </body>
 </html>
 <script>
     let container=document.getElementById("container")
-    let check_status=localStorage.getItem("isLoggedIn")
+    // let check_status=localStorage.getItem("isLoggedIn")
+    let check_status=sessionStorage.getItem("isLoggedIn")
     let falseUser=document.getElementById("falseUser")
-    let get_current_user =JSON.parse(localStorage.getItem("current_user"));
+    // let get_current_user =JSON.parse(localStorage.getItem("current_user"));
+    let get_current_user =JSON.parse(sessionStorage.getItem("current_user"));
     let username=document.getElementById("username")
 
     if(check_status=="true"){
         container.style.display="block" //this will show content
         username.innerHTML=`Welcome : ${get_current_user.username}`
+        fetchData()
     }else{
         container.style.display="none" // this will hide content
         falseUser.innerHTML=`<h1>Please login first</h1>
@@ -35,10 +41,41 @@
     }
 
     let handleLogout=()=>{
-        localStorage.removeItem("isLoggedIn")
-        localStorage.removeItem("current_user")
+        // localStorage.removeItem("isLoggedIn")
+        // localStorage.removeItem("current_user")
+        sessionStorage.removeItem("isLoggedIn")
+        sessionStorage.removeItem("current_user")
 
         window.location.reload()
     }
+
+    async function fetchData(){
+        // let data=fetch('https://dummyjson.com/products')
+        //         .then((res)=>res.json)
+        //         .then((items)=>console.log(items))
+
+        let res=await fetch('https://dummyjson.com/products')
+        let json_data=await res.json()
+        let products=json_data.products
+        // console.log(products)
+        let card = document.getElementById("card");
+        
+        products.forEach(element => {
+            card.innerHTML+=`
+            <div id="card">
+            <img src="${element.thumbnail}">
+            <h3>${element.title}</h3>
+            
+            </div>
+            `
+        });
+
+    }
+
+    // what is session storage 
+    // diff btw local ans session storage
+
+    // local storage--> stores data permanently in browser
+    // session storage--> stores data temporarily till tab closes
 
 </script>

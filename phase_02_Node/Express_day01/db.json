@@ -1,6 +1,7 @@
 {
-    "users":[
-        {"id":1,"name":"Aman","email":"aman@gmail.com"},
-        {"id":2,"name":"Prateek","email":"prateek@gmail.com"}
-    ]
+  "users": [
+    { "id": 1, "name": "Aman", "email": "aman@gmail.com" },
+    { "id": 2, "name": "Priya", "email": "Priya@gmail.com" },
+    { "id": 3, "name": "Manish", "email": "manish@gmail.com" }
+  ]
 }

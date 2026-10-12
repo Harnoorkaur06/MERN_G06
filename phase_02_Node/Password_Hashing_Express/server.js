@@ -35,10 +35,12 @@ app.post("/login",async(req,res)=>{
     const check_password= await bcrypt.compare(password,user.userpassword)
     if(!check_password){
         res.send("password does not match")
-    }else{
+    }
+    else{
         res.send("User logged in successfully")
     }
 })
+
 
 app.listen(8000,()=>{
     console.log("server is running in http://localhost:8000/")

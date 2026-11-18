@@ -1,4 +1,4 @@
-// SLA---> single page application
+// SPA---> single page application
 
 import Counter from "./Counter"
 import NameChanger from "./NameChanger"
